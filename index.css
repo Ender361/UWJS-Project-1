@@ -1,0 +1,23 @@
+body {
+    background-color: lightgray;
+}
+
+select {
+    font-size: 1.5em;
+    width: 200px;
+}
+
+#input-form {
+    margin: auto;
+    width: 500px;
+    padding: 2em;
+    background-color: lightblue;
+    border-radius: 30px;
+
+}
+
+#submit-all {
+    display: flex;
+    margin-top: 2em;
+    font-size: 1.4em;
+}
