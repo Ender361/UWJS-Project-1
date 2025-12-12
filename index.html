@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <form id="input-form">
+    <form id="input-form" class="bodyEl">
 
         <h1>Where would you like to foil?</h1>
-        <select id="select-where" name="where-selection">
-            <option value="none-selected">Select One</option>
+        <select id="select-where" name="where-selection" required>
+            <option value="">Select One</option>
             <option value="green-lake">Green Lake</option>
             <option value="lake-washington">Lake Washington</option>
             <option value="puget-sound">Puget Sound</option>
         </select>
 
         <h1>What is your experience level?</h1>
-        <select id="select-exp" name="exp-selection">
-            <option value="none-selected">Select One</option>
+        <select id="select-exp" name="exp-selection" required>
+            <option value="">Select One</option>
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
             <option value="advanced">Advanced</option>
@@ -29,6 +29,8 @@
 
         <button id="submit-all">submit all</button>
     </form>
+
+    <img src="wingfoil-stickdude.jpg" alt="stick figure wing foiler" id="wingfoil-img"></img>
 
     <script src="index.js"></script>
 </body>

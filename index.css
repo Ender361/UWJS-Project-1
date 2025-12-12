@@ -2,12 +2,13 @@ body {
     background-color: lightgray;
 }
 
-select {
+select, input {
     font-size: 1.5em;
     width: 200px;
+    box-sizing: border-box;
 }
 
-#input-form {
+.bodyEl {
     margin: auto;
     width: 500px;
     padding: 2em;
@@ -20,4 +21,8 @@ select {
     display: flex;
     margin-top: 2em;
     font-size: 1.4em;
+}
+
+#wingfoil-img {
+    width: 100px;
 }
