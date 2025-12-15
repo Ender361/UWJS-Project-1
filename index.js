@@ -93,9 +93,9 @@ let position = 0, direction = 1;
 const animateFoiler = () => {
     if (!wingfoilImage) return;
 
-    // Uses the 1 value of direction to indicate a direction change
+    // Increment of decrement the x position based on if direction is currently positive or negative
     position += direction;
-    // Reverse direction if hitting bounds (either 0 or max window width)
+    // Reverse direction and flip image if hitting bounds (either 0 or max window width)
     if (position >= window.innerWidth - wingfoilImage.offsetWidth || position <= 0) {
         direction *= -1;
         wingfoilImage.classList.toggle('flipped');
