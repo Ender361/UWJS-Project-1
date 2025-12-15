@@ -1,13 +1,35 @@
+/* Set a background image of the puget sound and make it cover the body */
 body {
-    background-color: lightgray;
+    background-image: url('seattle-backdrop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-select, input {
+/* Put the wingfoil image at the bottom of screen, set its size, border radius, and transition speed for the flip */
+#wingfoil-img {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    border-radius: 70px;
+    transition: transform 0.7s ease;
+}
+
+/* Flip class to be toggled when the image changes direction */
+.flipped {
+    transform: scaleX(-1);
+}
+
+/* General sizing for select options */
+select {
     font-size: 1.5em;
     width: 200px;
     box-sizing: border-box;
 }
 
+/* General sizing for body elements */
 .bodyEl {
     margin: auto;
     width: 500px;
@@ -17,12 +39,9 @@ select, input {
 
 }
 
+/* Sizing and display for submit button */
 #submit-all {
     display: flex;
     margin-top: 2em;
     font-size: 1.4em;
-}
-
-#wingfoil-img {
-    width: 100px;
 }

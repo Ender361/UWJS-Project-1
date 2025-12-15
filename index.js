@@ -21,7 +21,7 @@ const getInputs = () => {
     return inputsArray;
 }
 
-// Function to do something when the form is submitted
+// Async function to call api and update dom with windspeed and air temp
 const submitFunction = async (e) => {
     let inputsArray = getInputs();
     e.preventDefault();
@@ -43,24 +43,32 @@ const submitFunction = async (e) => {
     // Create new dom screen to show API results
     const apiResults = document.createElement('h1')
     // let windSpeed = result.current.wind_speed;
-    let windSpeed = 5;
+    let windSpeed = 19;
     console.log(windSpeed);
     // let airTemp = `${result.current.temperature} degrees celsius`;
     let airTemp = 10;
     console.log(airTemp);
 
     // Create textcontent based on the user input and then add to page
-    apiResults.textContent = `The windspeed at ${inputsArray[0]} is ${windSpeed}mph, the airtemp is ${airTemp}.`
+    apiResults.textContent = `The current windspeed at ${inputsArray[0]} is ${windSpeed}mph, the airtemp is ${airTemp}.`
     
     document.body.appendChild(apiResults);
 
     // Add a piece of advice to foil or not based on skill level and windspeed
     const foilRec = document.createElement('h1');
-    if (windSpeed < 10) {
-        foilRec.textContent = `Mild winds, have fun and bring a big wing!`
-    } else {
-        foilRec.textContent = `High winds, make sure you know what you're doing!`
-    }
+    if (windSpeed < 10 && inputsArray[1] === beginner) {
+        foilRec.textContent = `Mild winds, always wear a life jacket and helmet, and have fun out there!`
+    } else if (windSpeed < 10 && inputsArray[1] === 'intermediate'){
+        foilRec.textContent = `Mild winds, go for a 6 meter or larger wing if you got one!`
+    } else if (windSpeed < 10 && inputsArray[1] === 'advanced') {
+        foilRec.textContent = `Low winds, make sure you got a big wing or even better, someone to tow you!`
+    } else if (windSpeed >= 10 && inputsArray[1] === 'beginner') {
+        foilRec.textContent = `High winds, unfortunately not the best day to learn.`
+    } else if (windSpeed >= 10 && inputsArray[1] === 'intermediate') {
+        foilRec.textContent = `High winds, go for a smaller (under 6 meter) wing if you got one!`
+    } else if (windSpeed >= 10 && inputsArray[1] === 'advanced') {
+        foilRec.textContent = `Oh man, go shred that!!`
+    };
 
     document.body.appendChild(foilRec);
 
@@ -90,6 +98,7 @@ const animateFoiler = () => {
     // Reverse direction if hitting bounds (either 0 or max window width)
     if (position >= window.innerWidth - wingfoilImage.offsetWidth || position <= 0) {
         direction *= -1;
+        wingfoilImage.classList.toggle('flipped');
     }
     // Style changes that make the image move
     wingfoilImage.style.position = 'absolute';
