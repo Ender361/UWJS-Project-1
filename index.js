@@ -42,21 +42,24 @@ const submitFunction = async (e) => {
 
     // Create new dom screen to show API results
     const apiResults = document.createElement('h1')
-    // let windSpeed = result.current.wind_speed;
-    let windSpeed = 19;
+    let windSpeed = result.current.wind_speed;
+    // let windSpeed = 19; (this is for testing with no API)
     console.log(windSpeed);
-    // let airTemp = `${result.current.temperature} degrees celsius`;
-    let airTemp = 10;
+    let airTemp = `${result.current.temperature} degrees celsius`;
+    // let airTemp = 10; (this is for testing with no API)
     console.log(airTemp);
 
+    // Convert location value to display format
+    let locationDisplay = inputsArray[0].split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
     // Create textcontent based on the user input and then add to page
-    apiResults.textContent = `The current windspeed at ${inputsArray[0]} is ${windSpeed}mph, the airtemp is ${airTemp}.`
+    apiResults.textContent = `The current windspeed at ${locationDisplay} is ${windSpeed}mph, the air temperature is ${airTemp}.`
     
     document.body.appendChild(apiResults);
 
     // Add a piece of advice to foil or not based on skill level and windspeed
     const foilRec = document.createElement('h1');
-    if (windSpeed < 10 && inputsArray[1] === beginner) {
+    if (windSpeed < 10 && inputsArray[1] === 'beginner') {
         foilRec.textContent = `Mild winds, always wear a life jacket and helmet, and have fun out there!`
     } else if (windSpeed < 10 && inputsArray[1] === 'intermediate'){
         foilRec.textContent = `Mild winds, go for a 6 meter or larger wing if you got one!`
@@ -84,7 +87,9 @@ const submitFunction = async (e) => {
 }
 
 // Add event listener to the form's submit event which runs 
-inputForm.addEventListener('submit', submitFunction);
+if (inputForm) {
+    inputForm.addEventListener('submit', submitFunction);
+}
 
 // Variables to use in animate function
 let position = 0, direction = 1;
@@ -94,7 +99,7 @@ const animateFoiler = () => {
     if (!wingfoilImage) return;
 
     // Increment of decrement the x position based on if direction is currently positive or negative
-    position += direction;
+    position += direction * 2;
     // Reverse direction and flip image if hitting bounds (either 0 or max window width)
     if (position >= window.innerWidth - wingfoilImage.offsetWidth || position <= 0) {
         direction *= -1;
