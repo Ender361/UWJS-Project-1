@@ -5,4 +5,4 @@ API Key Usage: On line 4 of Index.js, paste the API key into the apiURLNoQuery v
 
 For usage guide on the API go to https://docs.apilayer.com/weatherstack/docs/api-documentation?utm_source=WeatherstackHomePage&utm_medium=Referral. 
  
-Be careful, the API key gives only 100 free calls per month, at the time of presentation I anticipate the current monthly call number to be around 20.
+Be careful, the API key gives only 100 free calls per month, at the time of presentation I anticipate the current monthly call number to be around 25.

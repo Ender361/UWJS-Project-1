@@ -1,7 +1,7 @@
 // Define global variables
 const inputForm = document.getElementById('input-form');
 const wingfoilImage = document.getElementById('wingfoil-img');
-const apiUrlNoQuery = 'https://api.weatherstack.com/current?access_key=(API KEY HERE)&query=';
+const apiUrlNoQuery = 'https://api.weatherstack.com/current?access_key=b22c5870c7f78b7854a5bdac139a4823&query=';
 const options = {
     method: "GET",
 };
