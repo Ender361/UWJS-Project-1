@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seattle Wingfoiling Weather</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <form id="input-form" class="bodyEl">
+
+        <h1>Where would you like to foil?</h1>
+        <select id="select-where" name="where-selection" required>
+            <option value="">Select One</option>
+            <option value="green-lake">Green Lake</option>
+            <option value="lake-washington">Lake Washington</option>
+            <option value="puget-sound">Puget Sound</option>
+        </select>
+
+        <h1>What is your experience level?</h1>
+        <select id="select-exp" name="exp-selection" required>
+            <option value="">Select One</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
+
+
+
+        <button id="submit-all">submit</button>
+    </form>
+
+    <img src="foilerStickFigure2.jpg" alt="stick figure wing foiler" id="wingfoil-img">
+
+    <script src="index.js"></script>
+</body>
+</html>
