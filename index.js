@@ -21,6 +21,8 @@ const getInputs = () => {
     return inputsArray;
 }
 
+// Moving the async api call function to vercel function folder, this will run the api call server side and hide the api key
+
 // Async function to call api and update dom with windspeed and air temp
 const submitFunction = async (e) => {
     let inputsArray = getInputs();
