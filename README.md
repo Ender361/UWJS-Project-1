@@ -7,4 +7,4 @@ For usage guide on the API go to https://docs.apilayer.com/weatherstack/docs/api
  
 Be careful, the API key gives only 100 free calls per month, at the time of presentation I anticipate the current monthly call number to be around 25.
 
-Edit 11/19/2026: Deployed the site to Vercel and hid the api key within Vercel server side function. Still needs user alerts for API calls remaining/location limiting for calls.
+Edit 11/19/2026: Deployed the site to Vercel and hid the API key within Vercel server side function. Still needs user alerts for API calls remaining/location limiting for calls.
