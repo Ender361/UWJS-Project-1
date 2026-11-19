@@ -21,8 +21,6 @@ const getInputs = () => {
     return inputsArray;
 }
 
-// Moving the async api call function to vercel function folder, this will run the api call server side and hide the api key
-
 // Async function to call api and update dom with windspeed and air temp
 const submitFunction = async (e) => {
     let inputsArray = getInputs();
@@ -31,11 +29,21 @@ const submitFunction = async (e) => {
     // API Call
     let result;
     try {
-        const response = await fetch(apiUrlNoQuery + `${inputsArray[2]}`, options)
-        result = await response.json();
-        console.log(result);
+      const foilLocation = encodeURIComponent(inputsArray[2]);
+      // Fetch the api result using vercel function with hidden api key
+      const response = await fetch(`/api/weather?foilLocation=${foilLocation}`);
+      // const response = await fetch(apiUrlNoQuery + `${inputsArray[2]}`, options)
+
+      if (!response.ok) {
+        throw new Error('Weather request failed');
+      }
+
+      result = await response.json();
+      console.log(result);
     } catch (error) {
         console.error(error);
+        alert('Could not get the weather. Please try again.');
+        return;
     }
 
     // Remove the form and img
@@ -44,7 +52,7 @@ const submitFunction = async (e) => {
 
     // Create new dom screen to show API results
     const apiResults = document.createElement('h1')
-    let windSpeed = result.current.wind_speed;
+    let windSpeed = result.current.wind_speed * 0.621371;
     // let windSpeed = 19; (this is for testing with no API)
     console.log(windSpeed);
     let airTemp = `${result.current.temperature} degrees celsius`;
@@ -55,7 +63,7 @@ const submitFunction = async (e) => {
     let locationDisplay = inputsArray[0].split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
     // Create textcontent based on the user input and then add to page
-    apiResults.textContent = `The current windspeed at ${locationDisplay} is ${windSpeed}mph, the air temperature is ${airTemp}.`
+    apiResults.textContent = `The current windspeed at ${locationDisplay} is ${windSpeed.toFixed(1)}mph, the air temperature is ${airTemp}.`
     
     document.body.appendChild(apiResults);
 
